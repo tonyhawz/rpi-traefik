@@ -11,7 +11,7 @@ script:
 - docker run tonyhawz/rpi-traefik:build version
 # push image
 - >
-  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  if [ "$TRAVIS_BRANCH" == "docker-hub" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
     TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
     docker tag tonyhawz/rpi-traefik:build tonyhawz/rpi-traefik:$TAG
